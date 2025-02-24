@@ -2,29 +2,37 @@ package org.example;
 
 import java.util.Objects;
 
-public class CheckGame {
+public class Rules {
+    String[][] board;
+
+    public Rules(String[][] inBoard) {
+        board = inBoard;
+    }
+
     public static boolean isGameFinished(String[][] board) {
 
         if (hasContestantWon(board, "  X  ")) {
-            GameUI.printBoard(board);
+            Board.printBoard(board);
             System.out.println("Player wins!");
             return true;
         }
 
         if (hasContestantWon(board, "  O  ")) {
-            GameUI.printBoard(board);
-            System.out.println("Computer wins!");
+            Board.printBoard(board);
+            System.out.println("Opponent wins!");
             return true;
         }
 
-        for (String[] strings : board) {
-            for (String string : strings) {
-                if (Objects.equals(string, "  X  ")) {
+        for (String[] row : board) {
+            for (String cell : row) {
+                // If any cell still contains a number (not "  X  " or "  O  "), the game is not over
+                if (!cell.equals("  X  ") && !cell.equals("  O  ")) {
                     return false;
                 }
             }
         }
-        GameUI.printBoard(board);
+
+        Board.printBoard(board);
         System.out.println("The game ended in a tie!");
         return true;
     }

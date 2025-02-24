@@ -1,10 +1,12 @@
 package org.example;
 
-public class GameUI {
-    String[][] board = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
+public class Board {
+    String[][] board;
+    Rules rule;
 
-    public String[][] getBoard() {
-        return board;
+    public Board(Rules inRule, String[][] inBoard) {
+        rule = inRule;
+        board = inBoard;
     }
 
     public static void printBoard(String[][] board) {

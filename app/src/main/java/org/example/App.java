@@ -1,27 +1,14 @@
 package org.example;
 
-import java.util.Scanner;
-
 public class App {
 
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        GameUI gameUI = new GameUI();
-        GameUI.printBoard(gameUI.getBoard());
-        while (true) {
-            TTTRound.playerTurn(gameUI.getBoard(), scanner);
-            if (CheckGame.isGameFinished(gameUI.getBoard())) {
-                break;
-            }
-            GameUI.printBoard(gameUI.getBoard());
-            TTTRound.computerTurn(gameUI.getBoard());
-            if (CheckGame.isGameFinished(gameUI.getBoard())) {
-                break;
-            }
-            GameUI.printBoard(gameUI.getBoard());
-        }
-        scanner.close();
+        String[][] boardSetup = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
+        Rules rules = new Rules(boardSetup);
+        Board board = new Board(rules, boardSetup);
+        Player player = new Human(boardSetup);
+        TTT ttt = new TTT(board, player, rules, boardSetup);
+        ttt.startGame();
     }
 
 }
