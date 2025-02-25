@@ -2,14 +2,12 @@ package org.example;
 
 public class Board {
     String[][] board;
-    Rules rule;
 
-    public Board(Rules inRule, String[][] inBoard) {
-        rule = inRule;
+    public Board(String[][] inBoard) {
         board = inBoard;
     }
 
-    public static void printBoard(String[][] board) {
+    public void printBoard(String[][] board) {
         System.out.println(board[0][0] + "|" + board[0][1] + "|" + board[0][2]);
         System.out.println("-----+-----+-----");
         System.out.println(board[1][0] + "|" + board[1][1] + "|" + board[1][2]);

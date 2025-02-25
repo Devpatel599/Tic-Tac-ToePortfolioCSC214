@@ -8,8 +8,7 @@ class BoardTest {
     @Test
     public void testBoardInitialization() {
         String[][] boardSetup = {{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
-        Rules rules = new Rules(boardSetup);
-        Board board = new Board(rules, boardSetup);
+        Board board = new Board(boardSetup);
 
         assertNotNull(board);
         assertArrayEquals(boardSetup, board.board);
@@ -18,7 +17,8 @@ class BoardTest {
     @Test
     public void testPrintBoard() {
         String[][] boardSetup = {{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
-        Board.printBoard(boardSetup);
+        Board board = new Board(boardSetup);
+        board.printBoard(boardSetup);
         // This test is more about ensuring the method runs without exceptions
         assertTrue(true);
     }

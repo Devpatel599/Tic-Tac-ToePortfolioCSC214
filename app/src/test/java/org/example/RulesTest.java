@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Test;
 
 class RulesTest {
     private String[][] boardSetup;
+    Rules rules;
 
     @BeforeEach
     public void setUp() {
         boardSetup = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
+        Board board = new Board(boardSetup);
+        rules = new Rules(boardSetup, board);
     }
 
     @Test
@@ -18,7 +21,7 @@ class RulesTest {
         boardSetup[0][0] = "  X  ";
         boardSetup[0][1] = "  X  ";
         boardSetup[0][2] = "  X  ";
-        assertTrue(Rules.isGameFinished(boardSetup));
+        assertTrue(rules.isGameFinished(boardSetup));
     }
 
     @Test
@@ -26,6 +29,6 @@ class RulesTest {
         boardSetup[0][0] = "  X  ";
         boardSetup[0][1] = "  X  ";
         boardSetup[0][2] = "  X  ";
-        assertTrue(Rules.hasContestantWon(boardSetup, "  X  "));
+        assertTrue(rules.hasContestantWon(boardSetup, "  X  "));
     }
 }
