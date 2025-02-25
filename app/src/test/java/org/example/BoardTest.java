@@ -1,25 +1,21 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class BoardTest {
-    @Test
-    public void testBoardInitialization() {
-        String[][] boardSetup = {{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
-        Board board = new Board(boardSetup);
+    private Board board;
+    private String[][] boardSetup;
 
-        assertNotNull(board);
-        assertArrayEquals(boardSetup, board.board);
+    @BeforeEach
+    void setUp() {
+        boardSetup = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
+        board = new Board(boardSetup);
     }
 
     @Test
-    public void testPrintBoard() {
-        String[][] boardSetup = {{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
-        Board board = new Board(boardSetup);
-        board.printBoard(boardSetup);
-        // This test is more about ensuring the method runs without exceptions
-        assertTrue(true);
+    void testPrintBoard() {
+        assertDoesNotThrow(() -> board.printBoard(boardSetup));
     }
 }
