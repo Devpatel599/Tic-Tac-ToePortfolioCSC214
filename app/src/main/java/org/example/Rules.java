@@ -25,7 +25,6 @@ public class Rules {
 
         for (String[] row : board) {
             for (String cell : row) {
-                // If any cell still contains a number (not "  X  " or "  O  "), the game is not over
                 if (!cell.equals("  X  ") && !cell.equals("  O  ")) {
                     return false;
                 }

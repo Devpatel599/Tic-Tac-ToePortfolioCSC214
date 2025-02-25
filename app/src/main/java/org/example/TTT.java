@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.InputStream;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,18 +8,13 @@ public class TTT {
     Player player;
     Rules rules;
     String[][] currentBoard;
+     Scanner scanner = new Scanner(System.in);
 
     public TTT(Board inBoard, Player inPlayer, Rules inRules, String[][] boardSetup) {
         board = inBoard;
         player = inPlayer;
         rules = inRules;
         currentBoard = boardSetup;
-    }
-
-    private Scanner scanner;
-
-    public TTT(InputStream input) {
-        this.scanner = new Scanner(input);
     }
 
     public void startGame() {
