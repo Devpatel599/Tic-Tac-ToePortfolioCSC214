@@ -5,13 +5,15 @@ import java.util.Scanner;
 
 public class Human implements Player {
     String[][] board;
+    Board boardSetup;
     String position;
     String symbol;
     Scanner scanner = new Scanner(System.in);
 
-    public Human(String[][] inBoard, String playerSymbol) {
+    public Human(String[][] inBoard, String playerSymbol, Board inBoardSetup) {
         board = inBoard;
         symbol = playerSymbol;
+        boardSetup = inBoardSetup;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class Human implements Player {
         }
     }
 
-    private void inputPosition() {
+    void inputPosition() {
         boolean valid;
         while (true) {
             System.out.println("Where would you like to play? (1-9)");
@@ -73,6 +75,7 @@ public class Human implements Player {
                 return;
             } else {
                 System.out.println(position + " is not a valid move.");
+                boardSetup.printBoard(board);
             }
         }
     }

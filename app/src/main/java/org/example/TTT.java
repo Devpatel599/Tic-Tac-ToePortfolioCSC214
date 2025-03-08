@@ -17,6 +17,7 @@ public class TTT {
     }
 
     public void startGame() {
+        System.out.println("Welcome!\nI Hope You Have Lots of Fun Playing Tic-Tac-Toe!\n");
         board.printBoard(currentBoard);
         while (true) {
             player1.move();
