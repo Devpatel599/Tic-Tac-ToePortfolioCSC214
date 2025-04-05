@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Rules {
     String[][] layoutBoard;
     Board board;
-
+    static boolean playerXPlaysNext = true;
     public Rules(String[][] inBoardLayout, Board inBoard) {
         layoutBoard = inBoardLayout;
         board = inBoard;
@@ -15,13 +15,19 @@ public class Rules {
 
         if (hasContestantWon(layoutBoard, "  X  ")) {
             board.printBoard(layoutBoard);
-            System.out.println("Player 1 wins!");
+            System.out.println("Player X wins! The current log is:");
+            PrintScore.playerXWinCounter++;
+            playerXPlaysNext = false;
+            PrintScore.winAndTieCountDisplay();
             return true;
         }
 
         if (hasContestantWon(layoutBoard, "  O  ")) {
             board.printBoard(layoutBoard);
-            System.out.println("Player 2 wins!");
+            System.out.println("Player O wins!");
+            PrintScore.playerOWinCounter++;
+            playerXPlaysNext = true;
+            PrintScore.winAndTieCountDisplay();
             return true;
         }
 
@@ -35,6 +41,8 @@ public class Rules {
 
         board.printBoard(layoutBoard);
         System.out.println("The game ended in a tie!");
+        PrintScore.tieCounter++;
+        PrintScore.winAndTieCountDisplay();
         return true;
     }
 
@@ -46,4 +54,5 @@ public class Rules {
 
                 (Objects.equals(board[0][0], symbol) && Objects.equals(board[1][1], symbol) && Objects.equals(board[2][2], symbol)) || (Objects.equals(board[0][2], symbol) && Objects.equals(board[1][1], symbol) && Objects.equals(board[2][0], symbol));
     }
+
 }

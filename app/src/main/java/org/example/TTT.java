@@ -17,19 +17,24 @@ public class TTT {
     }
 
     public void startGame() {
-        System.out.println("Welcome!\nI Hope You Have Lots of Fun Playing Tic-Tac-Toe!\n");
         board.printBoard(currentBoard);
         while (true) {
-            player1.move();
-            if (rules.isGameFinished(currentBoard)) {
-                break;
+            if(Rules.playerXPlaysNext) {
+                player1.move();
+                Rules.playerXPlaysNext = false;
+                if (rules.isGameFinished(currentBoard)) {
+                    break;
+                }
+                board.printBoard(currentBoard);
             }
-            board.printBoard(currentBoard);
-            player2.move();
-            if (rules.isGameFinished(currentBoard)) {
-                break;
+            if(!Rules.playerXPlaysNext) {
+                player2.move();
+                Rules.playerXPlaysNext = true;
+                if (rules.isGameFinished(currentBoard)) {
+                    break;
+                }
+                board.printBoard(currentBoard);
             }
-            board.printBoard(currentBoard);
         }
     }
 

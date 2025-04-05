@@ -3,6 +3,7 @@ package org.example;
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("Welcome!\nI Hope You Have Lots of Fun Playing Tic-Tac-Toe!\n");
         boolean playAgainValue = true;
         while (playAgainValue) {
             String[][] boardSetup = new String[][]{{"  1  ", "  2  ", "  3  "}, {"  4  ", "  5  ", "  6  "}, {"  7  ", "  8  ", "  9  "}};
@@ -14,7 +15,7 @@ public class App {
             ttt.startGame();
             playAgainValue = PlayAgain.checkYesNo();
         }
+        PrintScore.winAndTieToFile();
         System.out.println("I Hope You Had Fun!\nGoodbye!");
     }
-
 }

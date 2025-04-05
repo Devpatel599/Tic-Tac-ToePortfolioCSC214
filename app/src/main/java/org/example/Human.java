@@ -55,7 +55,7 @@ public class Human implements Player {
     void inputPosition() {
         boolean valid;
         while (true) {
-            System.out.println("Where would you like to play? (1-9)");
+            System.out.println("\nWhere would you like to play? (1-9):");
             position = scanner.nextLine();
 
 
